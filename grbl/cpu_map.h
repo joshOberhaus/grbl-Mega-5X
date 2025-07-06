@@ -403,12 +403,12 @@
   #endif
   #define STEP_BIT_0 0 // X Step - D37 / PC0
   #define STEP_BIT_1 1 // Y Step - D36 / PC1
-  #define STEP_BIT_2 2 // Z Step - D35 / PC2
+  #define STEP_BIT_2 4 // Z Step - D33 / PC4 (swapped with E1)
   #if N_AXIS > 3
     #define STEP_BIT_3 3 // E0 Step - D34 / PC3
   #endif
   #if N_AXIS > 4
-    #define STEP_BIT_4 4 // E1 Step - D33 / PC4
+    #define STEP_BIT_4 2 // E1 Step - D35 / PC2 (swapped with Z)
   #endif
   #define _STEP_BIT(i) STEP_BIT_##i
   #define STEP_BIT(i) _STEP_BIT(i)
@@ -429,12 +429,12 @@
   #endif
   #define DIRECTION_BIT_0 1 // X Dir - D48 / PL1
   #define DIRECTION_BIT_1 0 // Y Dir - D49 / PL0
-  #define DIRECTION_BIT_2 2 // Z Dir - D47 / PL2
+  #define DIRECTION_BIT_2 7 // Z Dir - D42 / PL7 (swapped with E1)
   #if N_AXIS > 3
     #define DIRECTION_BIT_3 6 // E0 Step - D43 / PL6
   #endif
   #if N_AXIS > 4
-    #define DIRECTION_BIT_4 7 // E1 Step - D42 / PL7
+    #define DIRECTION_BIT_4 2 // E1 Step - D47 / PL2 (swapped with Z)
   #endif
   #define _DIRECTION_BIT(i) DIRECTION_BIT_##i
   #define DIRECTION_BIT(i) _DIRECTION_BIT(i)
@@ -455,12 +455,12 @@
   #endif
   #define STEPPER_DISABLE_BIT_0 7 // X Enable - D29 / PA7
   #define STEPPER_DISABLE_BIT_1 6 // Y Enable - D28 / PA6
-  #define STEPPER_DISABLE_BIT_2 5 // Z Enable - D27 / PA5
+  #define STEPPER_DISABLE_BIT_2 3 // Z Enable - D25 / PA3 (swapped with E1)
   #if N_AXIS > 3
     #define STEPPER_DISABLE_BIT_3 4 // E0 Enable - D26 / PA4
   #endif
   #if N_AXIS > 4
-    #define STEPPER_DISABLE_BIT_4 3 // E1 Enable - D25 / PA3
+    #define STEPPER_DISABLE_BIT_4 5 // E1 Enable - D27 / PA5 (swapped with Z)
   #endif
   #define STEPPER_DISABLE_BIT(i) STEPPER_DISABLE_BIT_##i
   #define STEPPER_DISABLE_DDR(i) _DDR(STEPPER_DISABLE_PORT_##i)
@@ -616,9 +616,9 @@
   #define MS2_BIT_1 2 // D39
 
   #define MS1_PORT_2 K
-  #define MS1_BIT_2 6 // Z-Microsteps - D68
+  #define MS1_BIT_2 1 // Z-Microsteps - D63 (swapped with E1)
   #define MS2_PORT_2 K
-  #define MS2_BIT_2 5 // D67
+  #define MS2_BIT_2 2 // D64
 
   #define MS1_PORT_3 K
   #define MS1_BIT_3 3 // E0 Microsteps - D65
@@ -626,9 +626,9 @@
   #define MS2_BIT_3 4 // D66
 
   #define MS1_PORT_4 K
-  #define MS1_BIT_4 1 // E1 Microsteps - D63
+  #define MS1_BIT_4 6 // E1 Microsteps - D68 (swapped with Z)
   #define MS2_PORT_4 K
-  #define MS2_BIT_4 2 // D64
+  #define MS2_BIT_4 5 // D67
 
   #define MICROSTEP1 0,0
   #define MICROSTEP2 1,0
